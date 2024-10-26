@@ -55,9 +55,10 @@ with codecs.open('TEST.x9', 'rb') as input_file:
             logging.info("Image content : {} - len {} - Index {}".format((line_num),len(line_num),index))    
             try:
                 image_record = line_num[80:]
-                logging.info(image_record[121:])
-                logging.info(len(image_record[121:]))
-                image = Image.open(io.BytesIO(image_record[121:]))
+                image_record_content = image_record[121:]
+                logging.info(image_record_content)
+                logging.info(len(image_record_content))
+                image = Image.open(io.BytesIO(image_record_content))
                 image.save("img/output_{}.tiff".format(index))
                 
             except Exception as e :
